@@ -27,6 +27,7 @@
 #include <linux/string.h>
 #include <linux/init.h>
 #include <linux/stat.h>
+#include <linux/sched.h>
 
 #include "power.h"
 
