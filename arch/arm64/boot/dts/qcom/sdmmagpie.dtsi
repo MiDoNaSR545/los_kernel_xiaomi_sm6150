@@ -2944,7 +2944,7 @@
 		qcom,core-dev-table =
 			<  806400 MHZ_TO_MBPS(300, 16) >,
 			< 1094400 MHZ_TO_MBPS(466, 16) >,
-			< 1708800 MHZ_TO_MBPS(600, 16) >,
+			< 1324800 MHZ_TO_MBPS(600, 16) >,
 			< 1708800 MHZ_TO_MBPS(806, 16) >,
 			< 2438400 MHZ_TO_MBPS(933, 16) >;
 	};
