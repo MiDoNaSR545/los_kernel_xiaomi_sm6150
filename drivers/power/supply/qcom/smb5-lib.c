@@ -7503,12 +7503,8 @@ static void update_sw_icl_max(struct smb_charger *chg, int pst)
 			 * enumerate to check if this is a SDP and
 			 * appropriately set the current.
 			 */
-			if (!chg->recheck_charger)
-				vote(chg->usb_icl_votable, SW_ICL_MAX_VOTER, true,
-							SDP_100_MA);
-			else
-				vote(chg->usb_icl_votable, SW_ICL_MAX_VOTER, true,
-							FLOAT_CHARGER_UA);
+			vote(chg->usb_icl_votable, SW_ICL_MAX_VOTER,
+					true, SDP_100_MA);
 		break;
 	case POWER_SUPPLY_TYPE_UNKNOWN:
 	default:
