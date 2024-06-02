@@ -263,7 +263,7 @@ static int ashmem_open(struct inode *inode, struct file *file)
 	int ret;
 
 	ret = generic_file_open(inode, file);
-	if (ret)
+	if (unlikely(ret))
 		return ret;
 
 	asma = kmem_cache_zalloc(ashmem_area_cachep, GFP_KERNEL);
@@ -883,7 +883,7 @@ static int __init ashmem_init(void)
 	ashmem_area_cachep = kmem_cache_create("ashmem_area_cache",
 					       sizeof(struct ashmem_area),
 					       0, 0, NULL);
-	if (!ashmem_area_cachep) {
+	if (unlikely(!ashmem_area_cachep)) {
 		pr_err("failed to create slab cache\n");
 		goto out;
 	}
@@ -897,7 +897,7 @@ static int __init ashmem_init(void)
 	}
 
 	ret = misc_register(&ashmem_misc);
-	if (ret) {
+	if (unlikely(ret)) {
 		pr_err("failed to register misc device!\n");
 		goto out_free2;
 	}
