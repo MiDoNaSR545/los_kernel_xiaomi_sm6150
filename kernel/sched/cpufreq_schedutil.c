@@ -313,13 +313,46 @@ static void sugov_get_util(unsigned long *util, unsigned long *max, int cpu,
 	}
 }
 
+static inline unsigned long apply_dvfs_headroom(unsigned long util, int cpu)
+{
+        unsigned int sched_dvfs_headroom[8] = { [0 ... 7] = 1280 };
+        unsigned long capacity = capacity_orig_of(cpu);
+        unsigned long headroom;
+
+        if (util >= capacity)
+                return util;
+
+        /*
+         * Taper the boosting at e top end as these are expensive and
+         * we don't need that much of a big headroom as we approach max
+         * capacity
+         *
+         */
+        headroom = (capacity - util);
+        /* formula: headroom * (1.X - 1) == headroom * 0.X */
+        headroom = headroom *
+                (sched_dvfs_headroom[cpu] - SCHED_CAPACITY_SCALE) >> SCHED_CAPACITY_SHIFT;
+        return util + headroom;
+}
+
+unsigned long sugov_effective_cpu_perf(int cpu, unsigned long actual,
+				 unsigned long min,
+				 unsigned long max)
+{
+	/* Add dvfs headroom to actual utilization */
+	actual = apply_dvfs_headroom(actual, cpu);
+	/* Actually we don't need to target the max performance */
+	if (actual < max)
+		max = actual;
+	return max(min, max);
+}
+
 static void sugov_set_iowait_boost(struct sugov_cpu *sg_cpu, u64 time,
 				   unsigned int flags)
 {
 	if (flags & SCHED_CPUFREQ_IOWAIT) {
 		if (sg_cpu->iowait_boost_pending)
 			return;
-
 		sg_cpu->iowait_boost_pending = true;
 
 		if (sg_cpu->iowait_boost) {
