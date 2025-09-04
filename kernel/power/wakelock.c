@@ -138,9 +138,9 @@ static ssize_t version_show(struct kobject *kobj, struct kobj_attribute *attr,
 	return sprintf(buf, "Wakelock Governor v1.0\n");
 }
 
-static struct kobj_attribute enabled_attr = __ATTR(enabled, 0664, enabled_show, enabled_store);
-static struct kobj_attribute max_time_ms_attr = __ATTR(max_time_ms, 0664, max_time_ms_show, max_time_ms_store);
-static struct kobj_attribute debug_attr = __ATTR(debug, 0664, debug_show, debug_store);
+static struct kobj_attribute enabled_attr = __ATTR(enabled, 0644, enabled_show, enabled_store);
+static struct kobj_attribute max_time_ms_attr = __ATTR(max_time_ms, 0644, max_time_ms_show, max_time_ms_store);
+static struct kobj_attribute debug_attr = __ATTR(debug, 0644, debug_show, debug_store);
 static struct kobj_attribute stats_attr = __ATTR(stats, 0444, stats_show, NULL);
 static struct kobj_attribute version_attr = __ATTR(version, 0444, version_show, NULL);
 
