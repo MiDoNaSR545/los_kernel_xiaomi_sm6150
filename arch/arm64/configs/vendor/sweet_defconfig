@@ -4497,6 +4497,8 @@ CONFIG_QCA_CLD_WLAN_PROFILE="default"
 #
 # Qualcomm technologies inc. MSM specific device drivers
 #
+CONFIG_DRM_MSM_KCAL_CTRL=y
+CONFIG_KLAPSE=y
 CONFIG_MSM_EXT_DISPLAY=y
 CONFIG_QCOM_GENI_SE=y
 CONFIG_QPNP_REVID=y
