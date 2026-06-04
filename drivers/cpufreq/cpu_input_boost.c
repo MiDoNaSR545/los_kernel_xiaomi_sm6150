@@ -50,6 +50,7 @@ static struct boost_drv boost_drv_g __read_mostly = {
 	.boost_waitq = __WAIT_QUEUE_HEAD_INITIALIZER(boost_drv_g.boost_waitq)
 };
 
+#if 0
 static unsigned int get_min_freq(struct cpufreq_policy *policy)
 {
 	unsigned int freq;
@@ -61,6 +62,7 @@ static unsigned int get_min_freq(struct cpufreq_policy *policy)
 
 	return max(freq, policy->min);
 }
+#endif
 
 static void update_online_cpu_policy(void)
 {
