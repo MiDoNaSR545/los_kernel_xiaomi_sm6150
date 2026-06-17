@@ -180,20 +180,40 @@ And public attribution of xiaomi platforms(like F3 and so and)
 		pinctrl-names = "default";
 		pinctrl-0 = <&bq2597x_int_default &bq2597x_int_suspend>;
 
+		/*ti,bq2597x,bat-ovp-disable;*/
 		ti,bq2597x,bat-ovp-alarm-disable;
+		ti,bq2597x,bat-ocp-disable;
+		ti,bq2597x,bat-ocp-alarm-disable;
 		ti,bq2597x,bat-ucp-alarm-disable;
-		ti,bq2597x,bat-ovp-threshold        = <4550>;
-		ti,bq2597x,bat-ovp-alarm-threshold  = <4525>;
-		ti,bq2597x,bus-ovp-threshold        = <12000>;
-		ti,bq2597x,bus-ovp-alarm-threshold  = <11000>;
-		ti,bq2597x,bus-ocp-threshold        = <4200>;
-		ti,bq2597x,bus-ocp-alarm-threshold  = <3800>;
-		ti,bq2597x,bat-therm-threshold      = <0x15>; 
-		ti,bq2597x,bus-therm-threshold      = <0x15>; 
-		ti,bq2597x,die-therm-threshold      = <145>;
-		ti,bq2597x,ac-ovp-threshold         = <14>;
-		ti,bq2597x,input-current-limit      = <4000000>;  
-		ti,bq2597x,charging-current-limit   = <5000000>; 
+		ti,bq2597x,bat-ucp-disable;
+
+		/*ti,bq2597x,bus-ovp-alarm-disable;
+		ti,bq2597x,bus-ocp-disable;
+		ti,bq2597x,bus-ocp-alarm-disable;*/
+		ti,bq2597x,bat-therm-disable;
+		ti,bq2597x,bus-therm-disable;
+		ti,bq2597x,die-therm-disable;
+
+		ti,bq2597x,bat-ovp-threshold = <4550>;
+		ti,bq2597x,bat-ovp-alarm-threshold = <4525>;
+		//ti,bq2597x,bat-ocp-threshold = <5000>;
+		//ti,bq2597x,bat-ocp-alarm-threshold = <4500>;
+
+		ti,bq2597x,bus-ovp-threshold = <12000>;
+		ti,bq2597x,bus-ovp-alarm-threshold = <11000>;
+		//ti,bq2597x,bus-ocp-threshold = <2200>;
+		//ti,bq2597x,bus-ocp-alarm-threshold = <2000>;
+		ti,bq2597x,bus-ocp-threshold = <3750>;
+		ti,bq2597x,bus-ocp-alarm-threshold = <3500>;
+
+		//ti,bq2597x,bat-ucp-alarm-threshold = <2000>;
+
+		ti,bq2597x,bat-therm-threshold = <0x15>;/*4.1%*/
+		ti,bq2597x,bus-therm-threshold = <0x15>;/*4.1%*/
+		ti,bq2597x,die-therm-threshold = <145>;
+
+		ti,bq2597x,ac-ovp-threshold = <14>;
+		//ti,bq2597x,sense-resistor-mohm = <2>;
 	};
 
 	ln8000_charger@51 {
@@ -996,11 +1016,4 @@ And public attribution of xiaomi platforms(like F3 and so and)
 	vccq2-voltage-level = <1800000 1950000>;
 	spm-level = <3>;
 	rpm-level = <3>;
-	devfreq-min-freq = <200000000>;
-	devfreq-governor = "sched";
-	qcom,limit-devfreq-on-cpu-scaling;
-	qcom,enable-hs-gear-down;
-	qcom,ufs-idle-timeout = <600>;
-	qcom,ufs-clk-gating-delay-ms = <50>;
-	qcom,disable-lpm-during-suspend = <0>;
 };
