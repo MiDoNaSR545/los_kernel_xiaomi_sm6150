@@ -22,10 +22,7 @@ jobs:
         
     - name: 🔧 Clone Toolchains
       run: |
-        mkdir clang && cd clang
-        wget https://github.com/Neutron-Toolchains/clang-build-catalogue/releases/download/10032024/neutron-clang-10032024.tar.zst
-        tar --zstd -xvf neutron-clang-10032024.tar.zst
-        cd ..
+        mkdir clang && cd clang && curl -LO "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman" && chmod a+x antman && ./antman -S && ./antman --patch=glibc && cd ..
         git clone https://github.com/greenforce-project/gcc-arm64 -b main --depth=1 gcc64
         git clone https://github.com/greenforce-project/gcc-arm -b main --depth=1 gcc32
         
