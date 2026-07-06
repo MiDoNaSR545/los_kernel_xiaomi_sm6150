@@ -11,6 +11,7 @@
 #include <linux/cpuhotplug.h>
 
 #include <trace/events/erofs.h>
+#include <uapi/linux/sched/types.h>
 
 /*
  * since pclustersize is variable for big pcluster feature, introduce slab
