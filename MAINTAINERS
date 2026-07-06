@@ -5140,14 +5140,11 @@ F:	drivers/video/fbdev/s1d13xxxfb.c
 F:	include/video/s1d13xxxfb.h
 
 EROFS FILE SYSTEM
-M:	Gao Xiang <xiang@kernel.org>
+M:	Gao Xiang <gaoxiang25@huawei.com>
 M:	Chao Yu <yuchao0@huawei.com>
 L:	linux-erofs@lists.ozlabs.org
 S:	Maintained
-T:	git git://git.kernel.org/pub/scm/linux/kernel/git/xiang/erofs.git
-F:	Documentation/filesystems/erofs.txt
 F:	fs/erofs/
-F:	include/trace/events/erofs.h
 
 ERRSEQ ERROR TRACKING INFRASTRUCTURE
 M:	Jeff Layton <jlayton@poochiereds.net>
