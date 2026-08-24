@@ -34,6 +34,12 @@ static inline __maybe_unused unsigned long map_util_perf(unsigned long util)
 {
 	return util + (util >> 2);
 }
+
+/* Vorpal CPUFreq governor helpers adapted for the 4.14 scheduler. */
+void rfx_get_util_gki510(int cpu, unsigned long boost,
+			 unsigned long *out_util, unsigned long *out_bw_min);
+bool rfx_dl_bw_exceeded_gki510(int cpu, unsigned long bw_min);
+
 #endif /* CONFIG_CPU_FREQ */
 
 #endif /* _LINUX_SCHED_CPUFREQ_H */
