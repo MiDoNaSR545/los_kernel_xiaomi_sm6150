@@ -302,7 +302,7 @@ jobs:
             CROSS_COMPILE_ARM32="$GCC32/bin/arm-eabi-" \
             KBUILD_BUILD_USER="$KBUILD_BUILD_USER" \
             KBUILD_BUILD_HOST="$KBUILD_BUILD_HOST" \
-            KBUILD_COMPILER_STRING="$CLANG/clang"
+            KBUILD_COMPILER_STRING="Neutron clang version 24.0.0"
 
       - name: 📄 Save Defconfig
         run: cp out/.config out/sweet_defconfig.txt

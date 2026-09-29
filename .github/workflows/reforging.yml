@@ -59,7 +59,7 @@ jobs:
           export PATH="$CLANG_PATH/bin:$GCC64_PATH/bin:$GCC32_PATH/bin:$PATH"
           export KBUILD_BUILD_USER=Manipulator
           export KBUILD_BUILD_HOST=Vantom-inc
-          export KBUILD_COMPILER_STRING="$CLANG_PATH/clang"
+          export KBUILD_COMPILER_STRING="Neutron clang version 24.0.0"
           export CFLAGS_EXTRA="-DBUILD_DATE=$BUILD_DATE"
 
           make O=out ARCH=arm64 vendor/sweet_defconfig
