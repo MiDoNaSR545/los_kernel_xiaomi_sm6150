@@ -57,12 +57,12 @@ jobs:
       - name: 🛠️ Build Kernel
         run: |
           export PATH="$CLANG_PATH/bin:$GCC64_PATH/bin:$GCC32_PATH/bin:$PATH"
-          export KBUILD_BUILD_USER=Manipulator
+          export KBUILD_BUILD_USER=MiDoNaSR
           export KBUILD_BUILD_HOST=Vantom-inc
           export KBUILD_COMPILER_STRING="Neutron clang version 24.0.0"
           export CFLAGS_EXTRA="-DBUILD_DATE=$BUILD_DATE"
 
-          make O=out ARCH=arm64 vendor/sweet_defconfig
+          make O=out ARCH=arm64 sweet_defconfig
           make -j"$(nproc --all)" O=out ARCH=arm64 LLVM=1 LLVM_IAS=1 CC=clang \
             CLANG_TRIPLE="$CLANG_PATH/aarch64-linux-gnu-" \
             CROSS_COMPILE="$GCC64_PATH/bin/aarch64-elf-" \
@@ -78,7 +78,7 @@ jobs:
 
       - name: 📂 Prepare AnyKernel3
         run: |
-          git clone --depth=1 -b tobrut https://github.com/manipvlator/Anykernel3.git AnyKernel3
+          git clone --depth=1 -b tobrut https://github.com/MiDoNaSR545/Anykernel3.git AnyKernel3
           cp out/arch/arm64/boot/{Image.gz,dtbo.img,dtb.img} AnyKernel3/
           (cd AnyKernel3 && zip -r "../BruthXotic_${{ matrix.build_type }}-${{ github.ref_name }}-${BUILD_TIME}.zip" . -x ".git/*")
 
