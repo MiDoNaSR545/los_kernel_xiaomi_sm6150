@@ -16,6 +16,7 @@
 #include <linux/device.h>
 #include <linux/regmap.h>
 #include <linux/delay.h>
+#include <linux/module.h>
 #include <linux/power_supply.h>
 #include <linux/regulator/driver.h>
 #include <linux/qpnp/qpnp-revid.h>
