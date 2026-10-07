@@ -1222,6 +1222,8 @@ static int pl_fv_vote_callback(struct votable *votable, void *data,
 	struct pl_data *chip = data;
 	union power_supply_propval pval = {0, };
 	int rc = 0;
+	static struct power_supply *cp_psy = NULL;
+	bool cp_charge_enabled = false;
 
 	if (fv_uv < 0)
 		return 0;
